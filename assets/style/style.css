@@ -1,0 +1,237 @@
+    :root {
+      --bg: #f1f5f9;
+      --sidebar-bg: #020617;
+      --sidebar-muted: #94a3b8;
+      --primary: #2563eb;
+      --primary-soft: rgba(37,99,235,.1);
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --radius: 14px;
+    }
+
+    @font-face {
+        font-family: 'monsterrat';
+        src: url(../font/Montserrat.ttf);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "monsterrat" }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Layout */
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #020617, #020617ee);
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.4px;
+    }
+
+    .brand span { color: var(--primary); }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      color: var(--sidebar-muted);
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .nav button.active,
+    .nav button:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    /* Main */
+    .main {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .topbar h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .topbar p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media screen and (max-width:720px) {
+        .stats{
+            display: flex;
+        }
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .stat h3 {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .stat strong {
+      font-size: 1.6rem;
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .add {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .add input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .add button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 22px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Tasks */
+    ul.tasks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .task-left input { accent-color: var(--success); }
+
+    .task.completed span {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .task button {
+      background: none;
+      border: none;
+      color: var(--danger);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .app { grid-template-columns: 1fr; }
+
+      .sidebar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 18px;
+      }
+
+      .nav {
+        flex-direction: row;
+      }
+
+      .main { padding: 20px; }
+      .stats { grid-template-columns: 1fr; }
+    }
