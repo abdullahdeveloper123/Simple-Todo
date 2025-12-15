@@ -69,6 +69,12 @@
       transition: background .2s, color .2s;
     }
 
+    @media screen and (max-width:450px) {
+      .nav button {
+        padding:  0 0;
+      }
+    }
+
     .nav button.active,
     .nav button:hover {
       background: rgba(255,255,255,0.08);
